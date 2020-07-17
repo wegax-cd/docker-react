@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+    - docker
+    
+before_install:
+    - docker build -t wegax-cd/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true wegax-cd/docker-react npm run test -- --converage
